@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCollections.EditItemPage"
+             Title="Edytuj Przedmiot">
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="12">
+            <Entry x:Name="NameEntry" Placeholder="Nazwa" />
+            <Entry x:Name="PriceEntry" Placeholder="Cena" Keyboard="Numeric" />
+
+            <Picker x:Name="StatusPicker" Title="Status" />
+
+            <Label Text="Ocena:" />
+            <Slider x:Name="RatingSlider" Minimum="1" Maximum="10" />
+            <Label x:Name="RatingLabel" HorizontalOptions="Center" />
+
+            <Editor x:Name="CommentEditor" Placeholder="Komentarz" HeightRequest="100" />
+
+            <Button x:Name="SaveBtn" Text="Zapisz" Clicked="OnSave" />
+            <Button x:Name="DeleteBtn" Text="Usuń" Clicked="OnDelete" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

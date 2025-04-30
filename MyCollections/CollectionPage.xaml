@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyCollections.CollectionPage"
+             Title="{Binding Name}">
+    <VerticalStackLayout Padding="15" Spacing="10">
+        <Label Text="{Binding Name}" FontSize="26" FontAttributes="Bold" />
+
+        <CollectionView x:Name="ItemsView" SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5" CornerRadius="6">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="1.5*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Name}" Grid.Column="0" FontSize="18" />
+                            <Label Text="{Binding Price, StringFormat='Cena: {0:C}'}" Grid.Column="1" />
+                            <Label Text="{Binding Status}" Grid.Column="2" />
+                            <Label Text="{Binding Rating}" Grid.Column="2" VerticalOptions="End" HorizontalOptions="End"/>
+                        </Grid>
+                        <Frame.Triggers>
+                            <DataTrigger TargetType="Frame"
+                                         Binding="{Binding Status}"
+                                         Value="sprzedany">
+                                <Setter Property="Opacity" Value="0.4" />
+                            </DataTrigger>
+                        </Frame.Triggers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Dodaj przedmiot" Clicked="OnAddItem" />
+    </VerticalStackLayout>
+</ContentPage>
